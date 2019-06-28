@@ -1,0 +1,46 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Random Character</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <style>
+        .container {
+            width: 100%;
+            max-width: 1024px;
+            padding: 15px;
+            margin: 0 auto;
+        }
+
+        .col-1-2 {
+            width: 50%;
+            float: left;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="col-1-2">
+        <p th:text="'Name: ' + ${character.getName()}"/>
+        <p th:text="'Gender: ' + ${character.getGender()}"/>
+        <p th:text="'Species: ' + ${character.getSpecies()}"/>
+        <p th:text="'Type: ' + ${character.getType()}"/>
+        <p th:text="'Status: ' + ${character.getStatus()}"/>
+        <p th:text="'Origin: ' + ${character.getOrigin().getName()}"/>
+        <p th:text="'Location: ' + ${character.getLocation().getName()}"/>
+
+    </div>
+    <div class="col-1-2">
+        <img th:src="@{'character/avatar/'+${character.getId()}}" width="300" height="300"/>
+    </div>
+
+    <div class="col-1-2">
+        <p align="center">List episode</p>
+        <th:block th:each="episode: ${character.getEpisode()}">
+            <ul type="square">
+                <li th:text="${episode.getName()}+'('+${episode.getEpisode()}+')'"/>
+            </ul>
+        </th:block>
+    </div>
+</div>
+</body>
+</html>

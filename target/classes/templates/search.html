@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Find characters</title>
+</head>
+<body>
+<th:block th:each="character: ${characters}">
+    <ul type="square">
+        <li><a th:href="'/character?id='+${character.getId()}" th:text="${character.getName()}"></a></li>
+    </ul>
+</th:block>
+</body>
+</html>
